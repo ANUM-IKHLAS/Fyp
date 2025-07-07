@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assigned Courses by Student ID</title>
+</head>
+<body>
+    <h1>View Assigned Courses by Student ID</h1>
+    <form method="post">
+        <label for="StudentID">Enter Student ID:</label>
+        <input type="number" name="StudentID" id="StudentID" required value="{{ student_id or '' }}">
+        <button type="submit">Search</button>
+    </form>
+    {% if courses %}
+        <h2>Assigned Courses for {{ student.FirstName }} {{ student.LastName }} (ID: {{ student.StudentID }})</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th>Duration</th>
+                    <th>Semester</th>
+                    <th>Course</th>
+                    <th>Allowed</th>
+                    <th>Is Repeater</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in courses %}
+                <tr>
+                    <td>{{ c.ProgramName }}</td>
+                    <td>{{ c.StartYear }}–{{ c.EndYear }}</td>
+                    <td>{{ c.SemesterName }}</td>
+                    <td>{{ c.CourseName }}</td>
+                    <td>{{ c.Allowed }}</td>
+                    <td>{{ c.Is_Repeater }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif student_id is not none %}
+        <p>No assigned courses found for Student ID {{ student_id }}.</p>
+    {% endif %}
+    <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>

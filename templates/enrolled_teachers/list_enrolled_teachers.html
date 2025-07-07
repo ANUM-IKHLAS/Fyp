@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Enrolled Teachers</title>
+</head>
+<body>
+    <h1>List of Enrolled Teachers</h1>
+    <a href="{{ url_for('add_enrolled_teacher') }}">Add Enrolled Teacher</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Teacher Name</th>
+                <th>Course</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in enrolled_teachers %}
+                <tr>
+                    <td>{{ teacher.FirstName }} {{ teacher.LastName }}</td>
+                    <td>{{ teacher.CourseName }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_enrolled_teacher', id=teacher.TeacherID) }}" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this teacher?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

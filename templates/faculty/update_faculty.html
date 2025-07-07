@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Faculty</title>
+</head>
+<body>
+    <h1>Update Faculty</h1>
+    <form action="{{ url_for('update_faculty', id=faculty[0]) }}" method="POST">
+        <label for="FirstName">First Name:</label>
+        <input type="text" name="FirstName" value="{{ faculty[1] }}" required><br>
+        
+        <label for="LastName">Last Name:</label>
+        <input type="text" name="LastName" value="{{ faculty[2] }}" required><br>
+        
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" value="{{ faculty[3] }}" required><br>
+        
+        <label for="DepartmentID">Department:</label>
+        <select name="DepartmentID">
+            {% for department in departments %}
+            <option value="{{ department[0] }}" {% if department[0] == faculty[4] %} selected {% endif %}>{{ department[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Update Faculty</button>
+    </form>
+    <a href="{{ url_for('list_faculty') }}">Back to List</a>
+</body>
+</html>

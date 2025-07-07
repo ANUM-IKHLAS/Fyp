@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Department</title>
+</head>
+<body>
+    <h1>Add Department</h1>
+    <form action="{{ url_for('add_department') }}" method="POST">
+        <label for="DepartmentName">Department Name</label>
+        <input type="text" id="DepartmentName" name="DepartmentName" required><br><br>
+        
+        <button type="submit">Add Department</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Department List</a>
+</body>
+</html>

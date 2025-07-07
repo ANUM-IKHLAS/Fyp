@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Enrolled Teacher</title>
+</head>
+<body>
+    <h1>Add Enrolled Teacher</h1>
+    <form method="POST" action="{{ url_for('add_enrolled_teacher') }}">
+        <label for="FacultyID">Teacher:</label>
+        <select id="FacultyID" name="FacultyID" required>
+            {% for teacher in faculty %}
+                <option value="{{ teacher.FacultyID }}">{{ teacher.FirstName }} {{ teacher.LastName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="CourseID">Course:</label>
+        <select id="CourseID" name="CourseID" required>
+            {% for course in courses %}
+                <option value="{{ course.CourseID }}">{{ course.CourseName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Add Enrolled Teacher</button>
+    </form>
+</body>
+</html>

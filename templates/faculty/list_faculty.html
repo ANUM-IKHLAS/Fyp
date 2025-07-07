@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty List</title>
+</head>
+<body>
+    <h1>Faculty List</h1>
+    <a href="{{ url_for('add_faculty') }}">Add New Faculty</a>
+    <table border="1">
+        <tr>
+            <th>Faculty ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Department Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for faculty in faculty_members %}
+        <tr>
+            <td>{{ faculty[0] }}</td>
+            <td>{{ faculty[1] }}</td>
+            <td>{{ faculty[2] }}</td>
+            <td>{{ faculty[3] }}</td>
+            <td>{{ faculty[4] }}</td>
+            <td>
+                <a href="{{ url_for('update_faculty', id=faculty[0]) }}">Edit</a>
+                <form action="{{ url_for('delete_faculty', id=faculty[0]) }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

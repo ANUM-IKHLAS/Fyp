@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Timetable</title>
+</head>
+<body>
+    <h1>Add Timetable</h1>
+    <form method="POST" action="{{ url_for('add_timetable') }}">
+        <label for="CourseID">Course:</label>
+        <select id="CourseID" name="CourseID" required>
+            {% for course in courses %}
+                <option value="{{ course.CourseID }}">{{ course.CourseName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="DayOfWeek">Day:</label>
+        <input type="text" id="DayOfWeek" name="DayOfWeek" required><br>
+        
+        <label for="StartTime">Start Time:</label>
+        <input type="time" id="StartTime" name="StartTime" required><br>
+        
+        <label for="EndTime">End Time:</label>
+        <input type="time" id="EndTime" name="EndTime" required><br>
+        
+        <label for="RoomNumber">Room:</label>
+        <input type="text" id="RoomNumber" name="RoomNumber" required><br>
+        
+        <label for="TaughtBy">Taught By:</label>
+        <select id="TaughtBy" name="TaughtBy" required>
+            {% for teacher in faculty %}
+                <option value="{{ teacher.FacultyID }}">{{ teacher.FullName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Add Timetable</button>
+    </form>
+</body>
+</html>

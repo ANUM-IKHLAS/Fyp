@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Offered Teacher</title>
+</head>
+<body>
+    <h1>Add Offered Teacher</h1>
+    <form method="POST" action="{{ url_for('add_offered_teacher') }}">
+        <label for="FacultyID">Teacher:</label>
+        <select id="FacultyID" name="FacultyID" required>
+            {% for teacher in faculty %}
+                <option value="{{ teacher.FacultyID }}">{{ teacher.FirstName }} {{ teacher.LastName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="CourseID">Course:</label>
+        <select id="CourseID" name="CourseID" required>
+            {% for course in courses %}
+                <option value="{{ course.CourseID }}">{{ course.CourseName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="SemesterID">Semester:</label>
+        <select id="SemesterID" name="SemesterID" required>
+            {% for semester in semesters %}
+                <option value="{{ semester.SemesterID }}">{{ semester.SemesterName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Add Offered Teacher</button>
+    </form>
+</body>
+</html>

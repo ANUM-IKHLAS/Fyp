@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assigned Courses to Students</title>
+</head>
+<body>
+    <h1>Assigned Courses to Students</h1>
+    <a href="{{ url_for('add_assign_courses_to_student') }}">Assign Course to Student</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Program</th>
+                <th>Duration</th>
+                <th>Semester</th>
+                <th>Courses</th>
+                <th>Allowed</th>
+                <th>Is_Repeater</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for (student_id, name, program, duration, semester), courses in grouped.items() %}
+            {% for course in courses %}
+            <tr>
+                {% if loop.first %}
+                    <td rowspan="{{ courses|length }}">{{ student_id }}</td>
+                    <td rowspan="{{ courses|length }}">{{ name }}</td>
+                    <td rowspan="{{ courses|length }}">{{ program }}</td>
+                    <td rowspan="{{ courses|length }}">{{ duration }}</td>
+                    <td rowspan="{{ courses|length }}">{{ semester }}</td>
+                {% endif %}
+                <td>{{ course.CourseName }}</td>
+                <td>{{ course.Allowed }}</td>
+                <td>{{ course.Is_Repeater }}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in assignments %}
+            <tr>
+                <td>{{ a.FirstName }} {{ a.LastName }}</td>
+                <td>{{ a.ProgramName }}</td>
+                <td>{{ a.StartYear }} - {{ a.EndYear }}</td>
+                <td>{{ a.SemesterName }}</td>
+                <td>{{ a.CourseName }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

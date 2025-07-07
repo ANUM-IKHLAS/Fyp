@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course</title>
+</head>
+<body>
+    <h1>Update Course</h1>
+    <form method="POST" action="{{ url_for('update_course', id=course.CourseID) }}">
+        <label for="CourseName">Course Name:</label>
+        <input type="text" id="CourseName" name="CourseName" value="{{ course.CourseName }}" required><br>
+        
+        <label for="DepartmentID">Department:</label>
+        <select id="DepartmentID" name="DepartmentID" required>
+            {% for department in departments %}
+                <option value="{{ department.DepartmentID }}" {% if department.DepartmentID == course.DepartmentID %}selected{% endif %}>{{ department.DepartmentName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="FacultyID">Faculty:</label>
+        <select id="FacultyID" name="FacultyID" required>
+            {% for faculty_member in faculty %}
+                <option value="{{ faculty_member.FacultyID }}" {% if faculty_member.FacultyID == course.FacultyID %}selected{% endif %}>{{ faculty_member.FirstName }} {{ faculty_member.LastName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Update Course</button>
+    </form>
+</body>
+</html>

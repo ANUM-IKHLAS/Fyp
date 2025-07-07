@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Offered Program</title>
+</head>
+<body>
+    <h1>Add Offered Program</h1>
+    <form method="POST" action="{{ url_for('add_offered_program') }}">
+        <label for="ProgramName">Program Name:</label>
+        <input type="text" id="ProgramName" name="ProgramName" required><br>
+        
+        <label for="SessionID">Session:</label>
+        <select id="SessionID" name="SessionID" required>
+            {% for session in sessions %}
+                <option value="{{ session.SessionID }}">{{ session.StartYear }} - {{ session.EndYear }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Add Program</button>
+    </form>
+</body>
+</html>

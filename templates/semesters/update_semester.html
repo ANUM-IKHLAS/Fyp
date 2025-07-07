@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Semester</title>
+</head>
+<body>
+    <h1>Update Semester</h1>
+    <form method="POST" action="{{ url_for('update_semester', id=semester.SemesterID) }}">
+        <label for="SemesterName">Semester Name:</label>
+        <input type="text" id="SemesterName" name="SemesterName" value="{{ semester.SemesterName }}" required><br>
+        <button type="submit">Update Semester</button>
+    </form>
+</body>
+</html>

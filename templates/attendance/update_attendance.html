@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Attendance</title>
+</head>
+<body>
+    <h1>Update Attendance</h1>
+    <a href="{{ url_for('list_students') }}">Back to Students</a>
+    <form method="POST" action="{{ url_for('update_attendance', id=attendance.AttendanceID) }}">
+        <label for="StudentID">Student:</label>
+        <select id="StudentID" name="StudentID" required>
+            {% for student in students %}
+                <option value="{{ student.StudentID }}" {% if student.StudentID == attendance.StudentID %}selected{% endif %}>{{ student.FirstName }} {{ student.LastName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="CourseID">Course:</label> <!-- Updated to 'CourseID' -->
+        <select id="CourseID" name="CourseID" required>
+            {% for course in courses %}
+                <option value="{{ course.CourseID }}" {% if course.CourseID == attendance.CourseID %}selected{% endif %}>{{ course.CourseName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="AttendanceDate">Date:</label>
+        <input type="date" id="AttendanceDate" name="AttendanceDate" value="{{ attendance.AttendanceDate }}" required><br>
+        
+        <label for="AttendanceStatus">Present:</label>
+        <input type="checkbox" id="AttendanceStatus" name="AttendanceStatus" value="Present" {% if attendance.AttendanceStatus == 'Present' %}checked{% endif %}><br>
+        
+        <button type="submit">Update Attendance</button>
+    </form>
+</body>
+</html>

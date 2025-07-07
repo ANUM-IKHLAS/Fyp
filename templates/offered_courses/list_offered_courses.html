@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offered Courses</title>
+</head>
+<body>
+    <h1>Offered Courses</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Department</th>
+                <th>Faculty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in offered_courses %}
+                <tr>
+                    <td>{{ course.CourseID }}</td>
+                    <td>{{ course.CourseName }}</td>
+                    <td>{{ course.DepartmentName }}</td>
+                    <td>{{ course.FirstName }} {{ course.LastName }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

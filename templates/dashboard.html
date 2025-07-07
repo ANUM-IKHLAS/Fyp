@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p>Select an option to manage:</p>
+        <ul>
+            <li><a href="{{ url_for('list_departments') }}">Manage Departments</a></li>
+            <li><a href="{{ url_for('list_faculty') }}">Manage Faculty</a></li>
+            <li><a href="{{ url_for('list_students') }}">Manage Students</a></li>
+            <li><a href="{{ url_for('list_courses') }}">Manage Courses</a></li>
+            <li><a href="{{ url_for('list_timetables') }}">Manage Timetables</a></li>
+            <li><a href="{{ url_for('list_attendance') }}">Manage Attendance</a></li>
+            <li><a href="{{ url_for('list_enrolled_students') }}">Enrolled Students</a></li>
+            <li><a href="{{ url_for('list_offered_courses') }}">Offered Courses</a></li>
+            <li><a href="{{ url_for('list_semesters') }}">Semesters</a></li>
+            <li><a href="{{ url_for('list_enrolled_teachers') }}">Enrolled Teachers</a></li>
+            <li><a href="{{ url_for('assign_courses_by_id') }}">Assign Courses by Student ID</a></li>
+        </ul>
+        <h2>Manage Sessions</h2>
+        <a href="{{ url_for('list_sessions') }}">View Sessions</a><br>
+        <a href="{{ url_for('add_session') }}">Add Session</a><br>
+
+        <h2>Manage Offered Programs</h2>
+        <a href="{{ url_for('list_offered_programs') }}">View Offered Programs</a><br>
+        <a href="{{ url_for('add_offered_program') }}">Add Offered Program</a><br>
+
+        <h2>Manage Current Semester</h2>
+        <a href="{{ url_for('list_current_semester') }}">View Current Semesters</a><br>
+        <a href="{{ url_for('add_current_semester') }}">Add Current Semester</a><br>
+    </div>
+</body>
+</html>
